@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v2/trigger")
+@RequestMapping("/v4/trigger")
 public class UuidV4Controller {
     private final UuidV4Service uuidV2Service;
 
