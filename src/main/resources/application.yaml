@@ -2,15 +2,21 @@ spring:
   jpa:
     show-sql: true
     properties:
-      format_sql: true
-      dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   datasource:
-    # jdbc:mysql://localhost:3306/[TABLE NAME]?userSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
-    url: jdbc:mysql://localhost:3306/test?userSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/uuid?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: df159357
+    password: test1234
+    hikari:
+      minimum-idle: 10       # 유휴 커넥션 풀의 최소 크기
+      maximum-pool-size: 30   # 커넥션 풀의 최대 크기
+      idle-timeout: 600000    # 유휴 상태에서 커넥션을 유지하는 최대 시간 (10분)
+      max-lifetime: 1800000   # 커넥션의 최대 수명 (30분)
+      connection-timeout: 30000 # 커넥션을 가져오기 위한 최대 대기 시간 (30초)
+server:
+  port: 18080
