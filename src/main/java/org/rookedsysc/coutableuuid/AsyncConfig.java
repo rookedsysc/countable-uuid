@@ -31,4 +31,14 @@ public class AsyncConfig {
         executor.initialize();
         return executor;
     }
+    @Bean(name = "taskExecutor3")
+    public Executor taskExecutor3() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(10);        // 기본적으로 유지되는 스레드 수
+        executor.setMaxPoolSize(50);         // 최대 스레드 수
+        executor.setQueueCapacity(1000);     // 대기열에 들어갈 수 있는 작업 수
+        executor.setThreadNamePrefix("UUID-Service-");
+        executor.initialize();
+        return executor;
+    }
 }
